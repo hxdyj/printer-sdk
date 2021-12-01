@@ -14,7 +14,7 @@ export class Printer {
   private _baseUrl = `http://localhost:${this._port}`
   private _instence: Printer | undefined
   isReady: boolean = false
-  constructor(conf: { readyCb?: () => void; instenceCb?: () => void }) {
+  constructor(conf?: { readyCb?: () => void; instenceCb?: () => void }) {
     this._checkVersion()
     if (this._instence) {
       conf?.instenceCb?.()

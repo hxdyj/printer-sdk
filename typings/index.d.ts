@@ -10,7 +10,7 @@ declare class Printer {
     private _baseUrl;
     private _instence;
     isReady: boolean;
-    constructor(conf: {
+    constructor(conf?: {
         readyCb?: () => void;
         instenceCb?: () => void;
     });
