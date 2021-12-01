@@ -7,8 +7,6 @@ declare type PrintParam = Parameters<typeof print>;
 declare type PrinterItem = UnwrapArray<UnwrapPromise<ReturnType<typeof getPrinters>>>;
 declare class Printer {
     private _version;
-    private _port;
-    private _baseUrl;
     private _instence;
     isReady: boolean;
     constructor(conf?: {

@@ -4,7 +4,7 @@ import strip from '@rollup/plugin-strip'
 import dts from 'rollup-plugin-dts'
 export default [
   {
-    // external: ['pdf-to-printer'],
+    external: ['pdf-to-printer'],
     input: 'src/index.ts',
     output: {
       file: 'es/index.js',

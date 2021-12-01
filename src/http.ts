@@ -1,4 +1,5 @@
 import axios, { Method } from 'axios'
+import { G } from './config'
 type RequestResult = {
   code: number
   msg: string | undefined
@@ -17,13 +18,9 @@ type AxiosRequestConfig = {
   params?: unknown
   data?: unknown
 }
-let baseUrl = ''
 
-export function setBaseUrl(url: string) {
-  baseUrl = url
-}
 function getRequestUrl(url: string, config: RequestConfig): string {
-  let requestUrl = baseUrl
+  let requestUrl = G.baseUrl
   //url是否已http开头
   if (url.startsWith('http')) {
     requestUrl = url

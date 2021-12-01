@@ -1,5 +1,5 @@
 import { getPrinters, print } from 'pdf-to-printer'
-import http, { setBaseUrl } from './http'
+import http from './http'
 type UnwrapPromise<T> = T extends Promise<infer V> ? V : T
 type UnwrapArray<T> = T extends Array<infer V> ? V : T
 type PrintParam = Parameters<typeof print>
@@ -10,8 +10,6 @@ enum ErrorCode {
 }
 export class Printer {
   private _version = `0.0.1`
-  private _port = 40003
-  private _baseUrl = `http://localhost:${this._port}`
   private _instence: Printer | undefined
   isReady: boolean = false
   constructor(conf?: { readyCb?: () => void; instenceCb?: () => void }) {
@@ -23,7 +21,6 @@ export class Printer {
       this._instence = this
       conf?.readyCb?.()
       conf?.instenceCb?.()
-      setBaseUrl(this._baseUrl)
       return this._instence
     }
   }
