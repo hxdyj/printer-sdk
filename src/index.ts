@@ -51,14 +51,14 @@ export class Printer {
   }
 
   async getSources() {
-    return http('GET', `/printer/sources`, {})
+    return http<PrinterItem[]>('GET', `/printer/sources`, {})
   }
   async getDefaultPrinter() {
-    return http('GET', `/printer/default`, {})
+    return http<PrinterItem | null>('GET', `/printer/default`, {})
   }
 
   async print(fileUrl: string, printConf?: PrintParam[1]) {
-    return http('POST', `/printer/print`, {
+    return http<void>('POST', `/printer/print`, {
       fileUrl,
       printConf,
     })

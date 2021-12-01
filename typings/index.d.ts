@@ -1,3 +1,4 @@
+import * as pdf_to_printer_dist_get_default_printer_get_default_printer from 'pdf-to-printer/dist/get-default-printer/get-default-printer';
 import { getPrinters, print } from 'pdf-to-printer';
 
 declare type UnwrapPromise<T> = T extends Promise<infer V> ? V : T;
@@ -19,9 +20,9 @@ declare class Printer {
         clientVersion: string;
         sdkVersion: string;
     }>;
-    getSources(): Promise<unknown>;
-    getDefaultPrinter(): Promise<unknown>;
-    print(fileUrl: string, printConf?: PrintParam[1]): Promise<unknown>;
+    getSources(): Promise<pdf_to_printer_dist_get_default_printer_get_default_printer.Printer[]>;
+    getDefaultPrinter(): Promise<pdf_to_printer_dist_get_default_printer_get_default_printer.Printer | null>;
+    print(fileUrl: string, printConf?: PrintParam[1]): Promise<void>;
 }
 
 export { Printer, PrinterItem };
