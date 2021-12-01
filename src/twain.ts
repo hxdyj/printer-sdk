@@ -9,14 +9,6 @@ import { ref } from 'vue'
 import { EnvName } from '@/config/NodeEnv'
 Dynamsoft.DWT.ResourcesPath = 'dwt-resources'
 Dynamsoft.DWT.AutoLoad = true
-if (import.meta.env.MODE !== EnvName.PRODUCTION) {
-  Dynamsoft.DWT.ProductKey = `t0152KQMAAA6Ap26fK2TPFLM97atQ2WlgXZ/3J+PPQ+kta7EgZM7EK0aLcQs25J1ZWUjgfEyfI3mf/4IdIiudNpdnRgTT+ecjwTZExyAWEXKnVFxjuJt3MVoNbvqcpsy6Mx/sH4M+jeGEUduU/YxNN/OxQ/Yzt4YTRm3TzdyY/p5DGuJ+CtlqZhkZThi1Tc18Ne7l1kjPP2jyosI=`
-  console.log("Dynamic ProductKey");
-
-} else {
-  Dynamsoft.DWT.organizationID = "100777276"
-  console.log("Dynamic organizationID");
-}
 Dynamsoft.DWT.Containers = [{ WebTwainId: 'dwtcontrolContainer', Width: '0px', Height: '0px' }]
 Object.assign(Dynamsoft, {
   _show_install_dialog: () => {
