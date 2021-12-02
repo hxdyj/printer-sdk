@@ -2,9 +2,12 @@ import { getPrinters, print } from 'pdf-to-printer'
 import http from './http'
 type UnwrapPromise<T> = T extends Promise<infer V> ? V : T
 type UnwrapArray<T> = T extends Array<infer V> ? V : T
-type PrintParam = Parameters<typeof print>
+type PrintParam = Parameters<typeof print> & {
+  paperkind: string
+}
 
 export type PrinterItem = UnwrapArray<UnwrapPromise<ReturnType<typeof getPrinters>>>
+export type PrintConfig = PrintParam[1]
 enum ErrorCode {
   'VersionInconformity' = 1001,
 }
@@ -54,7 +57,7 @@ export class Printer {
     return http<PrinterItem | null>('GET', `/printer/default`, {})
   }
 
-  async print(fileUrl: string, printConf?: PrintParam[1]) {
+  async print(fileUrl: string, printConf?: PrintConfig) {
     return http<void>('POST', `/printer/print`, {
       fileUrl,
       printConf,
