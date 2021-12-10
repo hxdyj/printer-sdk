@@ -1,5 +1,6 @@
 import { getPrinters, print } from 'pdf-to-printer'
 import http from './http'
+import { PaperSizeItem } from './PrinterType'
 type UnwrapPromise<T> = T extends Promise<infer V> ? V : T
 type UnwrapArray<T> = T extends Array<infer V> ? V : T
 type PrintParam = Parameters<typeof print> & {
@@ -55,6 +56,18 @@ export class Printer {
   }
   async getDefaultPrinter() {
     return http<PrinterItem | null>('GET', `/printer/default`, {})
+  }
+
+  async getPaperSizes(printerName: string) {
+    return http<PaperSizeItem>('GET', `/printer/get/papersizes`, {
+      printerName,
+    })
+  }
+
+  async getTrays(printerName: string) {
+    return http<PaperSizeItem>('GET', `/printer/get/trays`, {
+      printerName,
+    })
   }
 
   async print(fileUrl: string, printConf?: PrintConfig) {
