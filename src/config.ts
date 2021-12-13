@@ -3,8 +3,8 @@ const port = {
   https: 40004,
 }
 const baseUrl = {
-  http: `http://localhost:${port.http}`,
-  https: `https://localhost:${port.https}`,
+  http: `http://127.0.0.1:${port.http}`,
+  https: `https://127.0.0.1:${port.https}`,
 }
 export const G = {
   port,
