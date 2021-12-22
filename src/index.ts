@@ -3,9 +3,7 @@ import http from './http'
 import { PaperSizeItem, TrayItem } from './PrinterType'
 type UnwrapPromise<T> = T extends Promise<infer V> ? V : T
 type UnwrapArray<T> = T extends Array<infer V> ? V : T
-type PrintParam = Parameters<typeof print> & {
-  paperkind: string
-}
+type PrintParam = Parameters<typeof print>
 export type { PaperSizeItem, TrayItem }
 export type PrinterItem = UnwrapArray<UnwrapPromise<ReturnType<typeof getPrinters>>>
 export type PrintConfig = PrintParam[1]

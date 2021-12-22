@@ -3,6 +3,9 @@
   "version": "0.0.12",
   "author": "hxdyj",
   "license": "MIT",
+  "scripts": {
+    "postinstall": "patch-package"
+  },
   "devDependencies": {
     "@rollup/plugin-strip": "^2.1.0",
     "@types/lodash": "^4.14.171",
