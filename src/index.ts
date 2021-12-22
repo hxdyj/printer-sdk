@@ -59,13 +59,13 @@ export class Printer {
   }
 
   async getPaperSizes(printerName: string) {
-    return http<PaperSizeItem[]>('GET', `/printer/get/papersizes`, {
+    return http<PaperSizeItem[]>('POST', `/printer/get/papersizes`, {
       printerName,
     })
   }
 
   async getTrays(printerName: string) {
-    return http<TrayItem[]>('GET', `/printer/get/trays`, {
+    return http<TrayItem[]>('POST', `/printer/get/trays`, {
       printerName,
     })
   }
