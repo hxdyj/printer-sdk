@@ -37,8 +37,8 @@ declare class Printer {
     }>;
     getSources(): Promise<pdf_to_printer_dist_get_default_printer_get_default_printer.Printer[]>;
     getDefaultPrinter(): Promise<pdf_to_printer_dist_get_default_printer_get_default_printer.Printer | null>;
-    getPaperSizes(printerName: string): Promise<PaperSizeItem>;
-    getTrays(printerName: string): Promise<TrayItem>;
+    getPaperSizes(printerName: string): Promise<PaperSizeItem[]>;
+    getTrays(printerName: string): Promise<TrayItem[]>;
     print(fileUrl: string, printConf?: PrintConfig): Promise<void>;
 }
 
