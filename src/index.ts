@@ -1,12 +1,12 @@
 import { getPrinters, print } from 'pdf-to-printer'
 import http from './http'
-import { PaperSizeItem } from './PrinterType'
+import { PaperSizeItem, TrayItem } from './PrinterType'
 type UnwrapPromise<T> = T extends Promise<infer V> ? V : T
 type UnwrapArray<T> = T extends Array<infer V> ? V : T
 type PrintParam = Parameters<typeof print> & {
   paperkind: string
 }
-
+export type { PaperSizeItem, TrayItem }
 export type PrinterItem = UnwrapArray<UnwrapPromise<ReturnType<typeof getPrinters>>>
 export type PrintConfig = PrintParam[1]
 enum ErrorCode {
@@ -65,7 +65,7 @@ export class Printer {
   }
 
   async getTrays(printerName: string) {
-    return http<PaperSizeItem>('GET', `/printer/get/trays`, {
+    return http<TrayItem>('GET', `/printer/get/trays`, {
       printerName,
     })
   }

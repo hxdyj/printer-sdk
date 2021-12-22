@@ -8,12 +8,18 @@ declare type PaperSizeItem = {
     RawKind: number;
     Width: number;
 };
+declare type TrayItem = {
+    Kind: string;
+    RawKind: number;
+    SourceName: string;
+};
 
 declare type UnwrapPromise<T> = T extends Promise<infer V> ? V : T;
 declare type UnwrapArray<T> = T extends Array<infer V> ? V : T;
 declare type PrintParam = Parameters<typeof print> & {
     paperkind: string;
 };
+
 declare type PrinterItem = UnwrapArray<UnwrapPromise<ReturnType<typeof getPrinters>>>;
 declare type PrintConfig = PrintParam[1];
 declare class Printer {
@@ -32,8 +38,8 @@ declare class Printer {
     getSources(): Promise<pdf_to_printer_dist_get_default_printer_get_default_printer.Printer[]>;
     getDefaultPrinter(): Promise<pdf_to_printer_dist_get_default_printer_get_default_printer.Printer | null>;
     getPaperSizes(printerName: string): Promise<PaperSizeItem>;
-    getTrays(printerName: string): Promise<PaperSizeItem>;
+    getTrays(printerName: string): Promise<TrayItem>;
     print(fileUrl: string, printConf?: PrintConfig): Promise<void>;
 }
 
-export { PrintConfig, Printer, PrinterItem };
+export { PaperSizeItem, PrintConfig, Printer, PrinterItem, TrayItem };
