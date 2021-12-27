@@ -16,9 +16,7 @@ declare type TrayItem = {
 
 declare type UnwrapPromise<T> = T extends Promise<infer V> ? V : T;
 declare type UnwrapArray<T> = T extends Array<infer V> ? V : T;
-declare type PrintParam = Parameters<typeof print> & {
-    paperkind: string;
-};
+declare type PrintParam = Parameters<typeof print>;
 
 declare type PrinterItem = UnwrapArray<UnwrapPromise<ReturnType<typeof getPrinters>>>;
 declare type PrintConfig = PrintParam[1];
